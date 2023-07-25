@@ -22,6 +22,61 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PSC4MF9W" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
+    <h1>Impact Interview Test by Yueting Shen</h1>
+    <h3>Please enter the URL</h3>
+    <input type="text" id="myTextbox" value="yourwebsite.githubio?key1=name&key2=name@email.com" style="width: 600px;">
+    <button onclick="extractAndDisplay()">Extract Data</button>
+    <h1>Extracted Data:</h1>
+    <p id='key1'></p>
+    <p id='key2'></p>
+
+    <script>
+        // Function to extract URL parameters and display the extracted data on the page
+        function extractAndDisplay() {
+            var queryString = document.getElementById('myTextbox').value.split('?')[1];
+            var urlParams = new URLSearchParams(queryString);
+            var key1 = urlParams.get('key1');
+            var key2 = urlParams.get('key2');
+
+            document.getElementById('key1').innerText = 'Key 1: ' + key1;
+            document.getElementById('key2').innerText = 'Key 2: ' + key2;
+        }
+
+        // For browsers that don't support URLSearchParams (e.g., IE)
+        if (!window.URLSearchParams) {
+            // URLSearchParams polyfill
+            (function () {
+                var URLSearchParams = function (search) {
+                    var params = {};
+                    search = search.substring(1).split('&');
+                    for (var i = 0; i < search.length; i++) {
+                        var pair = search[i].split('=');
+                        var key = decodeURIComponent(pair[0]);
+                        var value = decodeURIComponent(pair[1]);
+                        if (params[key]) {
+                            if (typeof params[key] === 'string') {
+                                params[key] = [params[key]];
+                            }
+                            params[key].push(value);
+                        } else {
+                            params[key] = value;
+                        }
+                    }
+
+                    this.get = function (key) {
+                        return params[key] || null;
+                    };
+                };
+
+                window.URLSearchParams = URLSearchParams;
+            })();
+        }
+    </script>
+
+
+
+
 </body>
 
 </html>
