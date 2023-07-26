@@ -49,6 +49,7 @@
             var key2 = urlParams.get('key2');
 
             // Store the values in the Data Layer
+            window.dataLayer = window.dataLayer || [];
             dataLayer.push({
                 'event': 'cta_Click',
                 'key1Value': key1,
