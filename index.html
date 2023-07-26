@@ -1,1 +1,67 @@
+<html lang="en">
 
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y1F4FJ6RL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7Y1F4FJ6RL');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-TDFK82C4');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImpactInterviewTest</title>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TDFK82C4" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <h1>Impact Interview Test by Yueting Shen</h1>
+    <h3>Please enter the URL and click "Extract Data" button</h3>
+    <input type="text" id="myTextbox" value="yourwebsite.githubio?key1=name&key2=name@email.com" style="width: 600px;">
+    <button id="button" onclick="extractAndDisplay()">Extract Data</button>
+    <h1>Extracted Data:</h1>
+    <p id='key1'></p>
+    <p id='key2'></p>
+
+    <script>
+        // Function to extract URL parameters and display the extracted data on the page
+        function extractAndDisplay() {
+            var queryString = document.getElementById('myTextbox').value.split('?')[1];
+            var urlParams = new URLSearchParams(queryString);
+            var key1 = urlParams.get('key1');
+            var key2 = urlParams.get('key2');
+
+            // Store the values in the Data Layer
+            dataLayer.push({
+                'event': 'cta_Click',
+                'key1': key1,
+                'key2': key2,
+                'customerid': key1,
+                'customeremail': key2
+            });
+
+            document.getElementById('key1').innerText = 'Key 1: ' + key1;
+            document.getElementById('key2').innerText = 'Key 2: ' + key2;
+        }
+    </script>
+
+</body>
+
+</html>
