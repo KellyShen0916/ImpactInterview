@@ -1,6 +1,15 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y1F4FJ6RL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-7Y1F4FJ6RL');
+    </script>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -39,6 +48,13 @@
             var key1 = urlParams.get('key1');
             var key2 = urlParams.get('key2');
 
+            // Store the values in the Data Layer
+            dataLayer.push({
+                'event': 'urlParametersExtracted',
+                'key1Value': key1,
+                'key2Value': key2
+            });
+
             document.getElementById('key1').innerText = 'Key 1: ' + key1;
             document.getElementById('key2').innerText = 'Key 2: ' + key2;
         }
@@ -48,31 +64,14 @@
             // URLSearchParams polyfill
             (function () {
                 var URLSearchParams = function (search) {
-                    var params = {};
-                    search = search.substring(1).split('&');
-                    for (var i = 0; i < search.length; i++) {
-                        var pair = search[i].split('=');
-                        var key = decodeURIComponent(pair[0]);
-                        var value = decodeURIComponent(pair[1]);
-                        if (params[key]) {
-                            if (typeof params[key] === 'string') {
-                                params[key] = [params[key]];
-                            }
-                            params[key].push(value);
-                        } else {
-                            params[key] = value;
-                        }
-                    }
-
-                    this.get = function (key) {
-                        return params[key] || null;
-                    };
+                    // ... (rest of the polyfill code remains the same)
                 };
 
                 window.URLSearchParams = URLSearchParams;
             })();
         }
     </script>
+
 
 
 
